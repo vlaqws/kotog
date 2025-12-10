@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование - Котогостиница</title>
+    
+    <!-- Подключаем милые шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Comic Neue', cursive; /* Меняем Arial на милый шрифт */
+            background: #fff; 
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        h1 { 
+            color: #b57fb3; 
+            text-align: center; 
+            margin: 40px 0 30px; 
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-family: 'Dancing Script', cursive; /* Красивый шрифт с завитушками */
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(181, 127, 179, 0.2);
+        }
+        .form-group { 
+            margin: 20px 0; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 500;
+            font-family: 'Comic Neue', cursive;
+        }
+        input, select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            font-size: 1rem;
+            font-family: 'Comic Neue', cursive;
+        }
+        input:focus, select:focus {
+            border-color: #d4a6c2;
+            outline: none;
+        }
+        .btn { 
+            background: #d4a6c2; 
+            color: white; 
+            padding: 14px 25px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+        }
+        .btn:hover {
+            background: #c294b0;
+            transform: translateY(-2px);
+        }
+        .back { 
+            display: inline-block; 
+            margin-top: 30px; 
+            color: #b57fb3; 
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #d4a6c2;
+            border-radius: 6px;
+            font-family: 'Comic Neue', cursive;
+        }
+        .back:hover {
+            background: #f8f0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Бронирование номера</h1>
+        <form>
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" required placeholder="Введите ваше имя">
+            </div>
+            <div class="form-group">
+                <label>Имя питомца</label>
+                <input type="text" required placeholder="Имя вашего котика">
+            </div>
+            <div class="form-group">
+                <label>Дата заезда</label>
+                <input type="date" required>
+            </div>
+            <div class="form-group">
+                <label>Дата выезда</label>
+                <input type="date" required>
+            </div>
+            <div class="form-group">
+                <label>Тип номера</label>
+                <select required>
+                    <option value="">Выберите номер</option>
+                    <option value="standard">Стандарт (200₽/сутки)</option>
+                    <option value="comfort">Комфорт (800₽/сутки)</option>
+                    <option value="luxury">Люкс (1200₽/сутки)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Забронировать</button>
+        </form>
+        <div style="text-align: center;">
+            <a href="index.html" class="back">← На главную</a>
+        </div>
+    </div>
+    
+    <script>
+        // Установка минимальной даты
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('input[type="date"]').forEach(input => {
+            input.min = today;
+        });
+        
+        // Обработка формы
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Бронирование отправлено! Мы свяжемся с вами для подтверждения.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

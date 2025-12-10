@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чат - Котогостиница</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial; 
+            background: #fff; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        h1 { 
+            color: #b57fb3; 
+            text-align: center; 
+            margin: 20px 0; 
+        }
+        .chat { 
+            border: 2px solid #d4a6c2; 
+            height: 400px; 
+            padding: 10px; 
+            overflow-y: auto; 
+            margin-bottom: 10px;
+        }
+        .input-area { 
+            display: flex; 
+            gap: 10px; 
+        }
+        input { 
+            flex: 1; 
+            padding: 10px; 
+            border: 1px solid #d4a6c2; 
+        }
+        button { 
+            background: #d4a6c2; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+        }
+        .back { 
+            display: inline-block; 
+            margin-top: 20px; 
+            color: #b57fb3; 
+            text-decoration: none;
+        }
+        .message { 
+            margin: 5px 0; 
+            padding: 8px; 
+            background: #f0f0f0; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Чат с менеджером</h1>
+        
+        <div class="chat" id="chat">
+        
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Введите сообщение...">
+            <button onclick="sendMessage()">Отправить</button>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back">← На главную</a>
+        </div>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const chat = document.getElementById('chat');
+            const text = input.value.trim();
+            
+            if (text === '') return;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.textContent = text;
+            
+            chat.appendChild(messageDiv);
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+        }
+        
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

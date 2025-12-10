@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши котики - Котогостиница</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Comic Neue', cursive; 
+            background: #fff; 
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 900px;
+            margin: 0 auto; 
+        }
+        h1 { 
+            color: #b57fb3; 
+            text-align: center; 
+            margin: 40px 0 30px; 
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-family: 'Dancing Script', cursive; 
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(181, 127, 179, 0.2);
+        }
+        .cat { 
+            border: 1px solid #f0e0f0; 
+            padding: 25px; 
+            margin: 30px 0; 
+            border-radius: 12px;
+            background: #fcf8fa;
+            box-shadow: 0 3px 10px rgba(200, 180, 220, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+        }
+        .cat-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid #e8d6e8;
+            flex-shrink: 0;
+        }
+        .cat-info {
+            flex: 1;
+        }
+        .cat h3 {
+            color: #b57fb3;
+            margin-bottom: 12px;
+            font-size: 1.6rem;
+            font-family: 'Dancing Script', cursive; 
+            font-weight: 700;
+        }
+        .cat p {
+            margin: 8px 0;
+            color: #666;
+            font-family: 'Comic Neue', cursive; 
+        }
+        .back { 
+            display: inline-block; 
+            margin: 30px 0; 
+            color: #b57fb3; 
+            text-decoration: none;
+            padding: 10px 25px;
+            border: 1px solid #d4a6c2;
+            border-radius: 6px;
+            background: white;
+            font-family: 'Comic Neue', cursive;
+        }
+        .back:hover {
+            background: #f8f0ff;
+        }
+        
+        @media (max-width: 768px) {
+            .cat {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cat-img {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Наши пушистые гости</h1>
+        
+        <div class="cat">
+            <img src="images/kesha.jpg" alt="Кот Кеша" class="cat-img">
+            <div class="cat-info">
+                <h3>Кеша</h3>
+                <p><strong>Возраст:</strong> 6 лет</p>
+                <p><strong>Характер:</strong> Очень серьезный котик, не сразу пошел на контакт, но со временем привык и стал нашим любимым, игривым и мурлычащим другом.</p>
+                <p><strong>Будем скучать!</strong></p>
+                <p><strong>Время нахождения у нас в гостях:</strong> 23 дня</p>
+            </div>
+        </div>
+        
+        <div class="cat">
+            <img src="images/mikki.jpg" alt="Котенок Микки" class="cat-img">
+            <div class="cat-info">
+                <h3>Микки</h3>
+                <p><strong>Возраст:</strong> 9 месяцев</p>
+                <p><strong>Характер:</strong> Забавный, умный и тактильный котёнок. Как только видит игрушки, то сразу мчится к ним.</p>
+                <p><strong>Расти большим и здоровым!!</strong></p>
+                <p><strong>Время нахождения у нас в гостях:</strong> 12 дней</p>
+            </div>
+        </div>
+
+         <div class="cat">
+            <img src="images/charli.jpg" alt="Котенок Чарли" class="cat-img">
+            <div class="cat-info">
+                <h3>Чарли</h3>
+                <p><strong>Возраст:</strong> 11 месяцев</p>
+                <p><strong>Характер:</strong> Нежный, тактильный котёнок. Любитель обильного тепла,именно у батареии!!!!!</p>
+                <p><strong>Самый телый кот - самые теплые мурчания</strong></p>
+                <p><strong>Время нахождения у нас в гостях:</strong> 22 дня </p>
+            </div>
+        </div>
+
+        <div class="cat">
+            <img src="images/venua.jpg" alt="Котенок Микки" class="cat-img">
+            <div class="cat-info">
+                <h3>Веня</h3>
+                <p><strong>Возраст:</strong> 11 месяцев </p>
+                <p><strong>Характер:</strong> Самый преданный наш гость. Очень любит тыгыдыкать и переворачивать всё вокруг себя. </p>
+                <p><strong>Твоя активность = залог твоего здоровья</strong></p>
+                <p><strong>Время нахождения у нас в гостях:</strong> 19 дней</p>
+            </div>
+        </div>
+        
+        <div class="cat">
+            <img src="images/muha.jpg" alt="Кошка Муха" class="cat-img">
+            <div class="cat-info">
+                <h3>Муха</h3>
+                <p><strong>Возраст:</strong> 2 года</p>
+                <p><strong>Характер:</strong> Любопытная кошечка, любит узнавать что-то новое, спокойная.</p>
+                <p><strong>Оставайся такой же!</strong></p>
+                <p><strong>Время нахождения у нас в гостях:</strong> 18 дней</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back">← На главную</a>
+        </div>
+    </div>
+</body>
+</html>

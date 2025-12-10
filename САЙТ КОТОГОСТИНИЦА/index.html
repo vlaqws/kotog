@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котогостиница</title>
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: #fff;
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.6;
+            /* ФОН С КОТИКАМИ */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(248, 240, 255, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 240, 248, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 20% 90%, rgba(232, 214, 232, 0.2) 0%, transparent 15%),
+                radial-gradient(circle at 80% 10%, rgba(212, 166, 194, 0.2) 0%, transparent 15%);
+            background-attachment: fixed;
+        }
+        
+        /* Кнопки сверху */
+        .top-auth {
+            text-align: right;
+            padding: 15px 20px;
+            background: rgba(248, 240, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #e8d6e8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .auth-btn {
+            padding: 8px 20px;
+            margin-left: 10px;
+            border-radius: 20px;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .login-btn {
+            background: white;
+            color: #b57fb3;
+            border-color: #d4a6c2;
+        }
+        
+        .register-btn {
+            background: #d4a6c2;
+            color: white;
+        }
+        
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 166, 194, 0.3);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Декоративные элементы */
+        .decoration {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.1;
+            font-size: 40px;
+            color: #d4a6c2;
+        }
+        
+        .cat1 { top: 10%; left: 5%; }
+        .cat2 { top: 20%; right: 10%; }
+        .cat3 { bottom: 15%; left: 15%; }
+        .cat4 { bottom: 25%; right: 5%; }
+        
+        /* Шапка */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(248, 240, 255, 0.95) 0%, rgba(255, 240, 248, 0.95) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 
+                0 10px 30px rgba(200, 180, 220, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            border: 3px solid rgba(232, 214, 232, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            color: #b57fb3;
+            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            text-shadow: 
+                2px 2px 4px rgba(181, 127, 179, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.5rem;
+            color: #a57ca0;
+            margin-top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Основной текст */
+        .main-text {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.25rem;
+            color: #555;
+            background: rgba(249, 249, 249, 0.9);
+            border-radius: 15px;
+            margin: 30px 0;
+            line-height: 1.8;
+            border: 2px solid rgba(232, 214, 232, 0.5);
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(200, 180, 220, 0.15);
+            position: relative;
+        }
+        
+        /* Кнопки */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 350px;
+            margin: 40px auto;
+        }
+        
+        .button {
+            padding: 18px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #d4a6c2 0%, #c294b0 100%);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(212, 166, 194, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(212, 166, 194, 0.6);
+        }
+        
+        .button:hover::before {
+            left: 100%;
+        }
+        
+        .button-secondary {
+            background: linear-gradient(135deg, #e8d6e8 0%, #d8c6d8 100%);
+            color: #777;
+            box-shadow: 0 6px 20px rgba(232, 214, 232, 0.4);
+        }
+        
+        .button-secondary:hover {
+            box-shadow: 0 10px 25px rgba(232, 214, 232, 0.6);
+        }
+        
+        /* Ссылки под кнопками */
+        .page-links {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .page-link {
+            color: #b57fb3;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+        }
+        
+        .page-link:hover {
+            background: rgba(212, 166, 194, 0.1);
+            border-color: rgba(212, 166, 194, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 25px;
+            color: #a57ca0;
+            font-size: 1rem;
+            border-top: 2px solid rgba(232, 214, 232, 0.5);
+            background: rgba(248, 240, 255, 0.5);
+            border-radius: 15px 15px 0 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Для котиков */
+        .cat-paw {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #e8d6e8 20%, transparent 21%),
+                        radial-gradient(circle at 70% 30%, #e8d6e8 20%, transparent 21%),
+                        radial-gradient(circle at 30% 70%, #e8d6e8 20%, transparent 21%),
+                        radial-gradient(circle at 70% 70%, #e8d6e8 20%, transparent 21%),
+                        radial-gradient(circle at 50% 50%, #e8d6e8 30%, transparent 31%);
+            opacity: 0.2;
+        }
+        
+        .paw1 { top: 15%; left: 8%; }
+        .paw2 { top: 25%; right: 12%; }
+        .paw3 { bottom: 20%; left: 18%; }
+        .paw4 { bottom: 30%; right: 8%; }
+    </style>
+</head>
+<body>
+    <!-- Декоративные котики на фоне -->
+    <div class="decoration cat1">🐾</div>
+    <div class="decoration cat2">🐾</div>
+    <div class="decoration cat3">🐾</div>
+    <div class="decoration cat4">🐾</div>
+    
+    
+    <div class="cat-paw paw1"></div>
+    <div class="cat-paw paw2"></div>
+    <div class="cat-paw paw3"></div>
+    <div class="cat-paw paw4"></div>
+    <div class="cat-paw paw1"></div>
+    <div class="cat-paw paw2"></div>
+    <div class="cat-paw paw1"></div>
+    <div class="cat-paw paw2"></div>
+    <div class="cat-paw paw1"></div>
+    <div class="cat-paw paw2"></div>
+    
+    
+    <div class="top-auth">
+        <a href="login.html" class="auth-btn login-btn">Вход</a>
+        <a href="login.html#register-form" class="auth-btn register-btn">Регистрация</a>
+    </div>
+    
+    <div class="container">
+       
+        <div class="header">
+            <h1>Котогостиница</h1>
+            <p>Дом для ваших нежных усатиков</p>
+        </div>
+        
+        
+        <div class="main-text">
+            Котогостиница — это место, которое протоптано мягкими лапками 
+            ваших нежных усатиков. Здесь каждый уголок пропитан теплом, 
+            заботой и безграничной любовью к нашим пушистым гостям.
+        </div>
+        
+        <!-- Кнопки -->
+        <div class="buttons">
+            <a href="booking.html" class="button">
+                Забронировать номер
+            </a>
+            
+            <a href="cats.html" class="button button-secondary">
+                Наши пушистые гости
+            </a>
+            
+            <a href="service.html" class="button button-secondary">
+                Наши услуги
+            </a>
+            
+            <a href="chat.html" class="button button-secondary">
+                Чат с менеджером
+            </a>
+        </div>
+        
+        <div class="page-links">
+            <a href="cats.html" class="page-link">Наши котики</a>
+            <a href="service.html" class="page-link">Услуги</a>
+            <a href="booking.html" class="page-link">Бронирование</a>
+            <a href="chat.html" class="page-link">Чат</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2025 Котогостиница • Дом, где коты чувствуют себя как дома</p>
+    </div>
+</body>
+</html>
